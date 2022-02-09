@@ -1,3 +1,5 @@
+import java.net.URI
+
 val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
@@ -15,6 +17,13 @@ application {
 
 repositories {
     mavenCentral()
+    maven { url = URI("https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven") }
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).all {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
